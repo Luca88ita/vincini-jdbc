@@ -16,7 +16,7 @@ public class Main {
 		
 		String URL = "jdbc:mysql://localhost/ifts_universita";
 		Properties info = new Properties( );
-		info.put( "user", "root" );
+		info.put( "user", "fanni92" );
 		info.put( "password", "root" );
 		info.put( "autoReconnect", "true" );
 		info.put( "useSSL", "false" );
@@ -102,8 +102,8 @@ public class Main {
         	
 	        //System.out.println("Matr: " + s1.matr + ", Nome: "  + s1.nome);
 
-	 //   	for(vinciniUniversita.Esame e : s1.listaEsami){
-	 //   		System.out.println("vinciniUniversita.Esame: " + e.NomeCorso);
+	 //   	for(Esame e : s1.listaEsami){
+	 //   		System.out.println("Esame: " + e.NomeCorso);
 	 //   	}	
 
 	       conn.close();

@@ -36,7 +36,7 @@ public class Esame {
 		
 		String out="";
 		
-		out = "vinciniUniversita.Esame [NomeCorso=" + NomeCorso + ", dataEsame=" + dataEsame
+		out = "Esame [NomeCorso=" + NomeCorso + ", dataEsame=" + dataEsame
 				+ ", voto=" + voto + "]";
 		return out;
 	}

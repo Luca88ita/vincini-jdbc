@@ -10,13 +10,15 @@ public class Esame2 {
   public String nomeCorso;
   public String data;
   public int voto;
+  public String docente;
 
-  public Esame2(String matricola, String codiceCorso, String data, int voto, String nomeCorso) {
+  public Esame2(String matricola, String codiceCorso, String data, int voto, String nomeCorso, String docente) {
     this.matricola = matricola;
     this.codiceCorso = codiceCorso;
     this.nomeCorso = nomeCorso;
     this.data = data;
     this.voto = voto;
+    this.docente = docente;
   }
 
   /*public mio20230324.Esame2(Connection cn, String esame){
@@ -26,12 +28,12 @@ public class Esame2 {
 
   @Override
   public String toString() {
-    return "Esame2{" +
-            "matricola='" + matricola + '\'' +
-            ", codiceCorso='" + codiceCorso + '\'' +
-            ", nomeCorso='" + nomeCorso + '\'' +
-            ", data='" + data + '\'' +
-            ", voto=" + voto +
-            '}';
+    String output = " - "+nomeCorso +
+            ", codice corso '" + codiceCorso + "'" +
+            ", tenuto dal prof. " + docente +
+            ", e' stato superato con voto " + voto +
+            " dalla matricola '" + matricola + "'" +
+            " in data " + data+"\n";
+    return output;
   }
 }
