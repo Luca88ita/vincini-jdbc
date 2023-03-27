@@ -22,7 +22,7 @@ public class Main2 {
 
       String URL = "jdbc:mysql://localhost/ifts_universita";
       Properties info = new Properties( );
-      info.put( "user", "fanni92" );
+      info.put( "user", "root" );
       info.put( "password", "root" );
       info.put( "autoReconnect", "true" );
       info.put( "useSSL", "false" );

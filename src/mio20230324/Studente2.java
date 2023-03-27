@@ -11,6 +11,7 @@ public class Studente2 {
   public String citta;
   public int anno;
   public ArrayList<Esame2> listaEsami;
+  public float mediaEsami;
   public boolean studenteEsiste;
 
   public Studente2() {
@@ -19,6 +20,7 @@ public class Studente2 {
     citta = "";
     anno = 0;
     listaEsami = null;
+    mediaEsami = 0;
     studenteEsiste = false;
   }
 
@@ -61,6 +63,22 @@ public class Studente2 {
       Esame2 e = new Esame2(rs.getString("matr"),rs.getString("cc"), rs.getString("data"),rs.getInt("voto"),rs.getString("cnome"), rs.getString("dnome") );
       this.listaEsami.add(e);
     }
+
+    // Clean-up environment
+    prstmt.close();
+    rs.close();
+
+    sql = "SELECT AVG(e.voto) AS 'media'"+
+            "FROM e,s "+
+            "WHERE e.matr = s.matr "+
+            "AND e.matr = ?";
+    prstmt = cn.prepareStatement(sql);
+    prstmt.setString(1,matricola);
+    rs = prstmt.executeQuery();
+    if (rs.next()){
+      this.mediaEsami = rs.getFloat("media");
+    }
+
   }
 
   public void inserisciStudente(Connection cn) throws Exception {
@@ -123,6 +141,7 @@ public class Studente2 {
       for(Esame2 e : this.listaEsami){
         output += e.toString();
       }
+      output += " ed ha una media di "+mediaEsami;
     }
     return output;
   }

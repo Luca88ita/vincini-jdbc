@@ -17,8 +17,8 @@ public class Main {
     try{
       Connection conn = null;
       Statement stmt = null;
-      String file = "esposzioni.txt";
-      String filejson = "esposizioni.json";
+      //String file = "esposzioni.txt";
+      //String filejson = "esposizioni.json";
 
       String URL = "jdbc:mysql://localhost/ifts_2023_esposizioni";
       Properties info = new Properties( );
@@ -28,8 +28,8 @@ public class Main {
       info.put( "useSSL", "false" );
       info.put( "serverTimezone", "Europe/Amsterdam" );
 
-      PrintWriter pw  = new PrintWriter(new FileWriter(file, false));
-      PrintWriter rw_json = new PrintWriter(new FileWriter(filejson, false));
+      //PrintWriter pw  = new PrintWriter(new FileWriter(file, false));
+      //PrintWriter rw_json = new PrintWriter(new FileWriter(filejson, false));
 
       //Convertor ClassConvert = new Convertor ();
       //JSONArray jsonConvert;
@@ -41,14 +41,15 @@ public class Main {
       System.out.println("Tentativo di connessione al database...");
       conn = DriverManager.getConnection(URL, info);
       System.out.println("Connessione stabilita\n");
-      Mostra mostra = new Mostra(conn, "M1");
+
+      Mostra mostra = new Mostra(conn, "M5");
       System.out.println("La "+mostra);
 
       // dichiaro i dati dello studente ricercato (potrei ricevere i dati in input)
-      String cm = "M8";
-      String nome = "Mostra8";
+      String cm = "M9";
+      String nome = "Mostra9";
       int anno = 1998;
-      String organizzatore = "Organizzatore 2";
+      String organizzatore = "Organizzatore 1";
 
       // dichiaro se voglio eliminare la mostra trovata, o se voglio solo modificarne i dati
       boolean eliminaMostra = false;
@@ -87,8 +88,8 @@ public class Main {
       }
       System.out.println(mostra2);
 
-      String cq = "Q11";
-      String autore = "Picasso";
+      String cq = "Q12";
+      String autore = "Autore2";
       String periodo = "Periodo5";
 
       // dichiaro se voglio eliminare la mostra trovata, o se voglio solo modificarne i dati
