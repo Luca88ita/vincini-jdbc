@@ -22,7 +22,7 @@ public class Main {
 
       String URL = "jdbc:mysql://localhost/ifts_2023_esposizioni";
       Properties info = new Properties( );
-      info.put( "user", "root" );
+      info.put( "user", "fanni92" );
       info.put( "password", "root" );
       info.put( "autoReconnect", "true" );
       info.put( "useSSL", "false" );

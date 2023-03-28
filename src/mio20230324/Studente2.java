@@ -138,8 +138,8 @@ public class Studente2 {
       output = output + ", non ha ancora sostenuto esami: \n";
     }else{
       output = output + ", ha sostenuto i seguenti esami:\n";
-      for(Esame2 e : this.listaEsami){
-        output += e.toString();
+      for(Esame2 exam : this.listaEsami){
+        output += exam.toString();
       }
       output += " ed ha una media di "+mediaEsami;
     }

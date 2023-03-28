@@ -22,7 +22,7 @@ public class Main2 {
 
       String URL = "jdbc:mysql://localhost/ifts_universita";
       Properties info = new Properties( );
-      info.put( "user", "root" );
+      info.put( "user", "fanni92" );
       info.put( "password", "root" );
       info.put( "autoReconnect", "true" );
       info.put( "useSSL", "false" );
@@ -65,7 +65,7 @@ public class Main2 {
           if(eliminationResult){
             System.out.print("Eliminato lo ");
           }else{
-            System.out.print("ERRORE!!! Con degli esami registrati e' impossibile eliminare lo ");
+            System.out.print("ERRORE!!! Con degli esami registrati e' impossibile eliminare lo studente.\n Lo ");
           }
         }else{
           System.out.println("Procedo con l'aggiornamento dei dati...");
