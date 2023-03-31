@@ -5,21 +5,46 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-
 import java.util.ArrayList;
 import java.util.Properties;
 import java.io.*;
 
 import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import java.io.InputStream;
+
 public class Main {
+
 	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";
 
+	/**
+	 * This function returns the values inside a json file reading the requested property
+	 * @param property is the property we must find out
+	 * @return a String with the value corresponding to that property
+	 */
+	private static String getJSONData(String property){
+		String loc = "MySQLconfig.json";
+		File confFile = new File(loc);
+		String jdbcProperty = "";
+		try {
+			String content = new String(Files.readAllBytes(Paths.get(confFile.toURI())));
+			JSONObject jsonContent = new JSONObject(content);
+			jdbcProperty = jsonContent.getString(property);
+		} catch (Exception e) {
+			System.out.println("Errore di lettura del file "+loc+": "+e);
+		}
+		return jdbcProperty;
+	}
+
 	public static void main(String[] args) throws Exception {
+
 		try {
 			Connection conn = null;
 			Statement stmt = null;
@@ -28,8 +53,8 @@ public class Main {
 
 			String URL = "jdbc:mysql://localhost/ifts_universita";
 			Properties info = new Properties( );
-			info.put( "user", "root" );
-			info.put( "password", "root" );
+			info.put( "user", getJSONData("user") );
+			info.put( "password", getJSONData("password") );
 			info.put( "autoReconnect", "true" );
 			info.put( "useSSL", "false" );
 			info.put( "serverTimezone", "Europe/Amsterdam" );

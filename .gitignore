@@ -44,3 +44,6 @@ bin/
 ### intelliJ folders
 /.idea
 /=
+
+### MySQLconfig.json
+MySQLconfig.json

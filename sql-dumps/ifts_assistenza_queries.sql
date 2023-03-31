@@ -50,3 +50,15 @@ HAVING SUM(errore.costo) >= ALL (
 	SELECT SUM(errore.costo)
 	FROM errore
 	GROUP BY errore.codc);
+
+/* seleziona i 2 clienti che hanno i costi totali maggiori dovuti ad errori*/
+WITH prova AS(
+	SELECT DISTINCT cliente.*, SUM(errore.costo) AS 'Somma costo riparazioni', DENSE_RANK() OVER (ORDER BY SUM(errore.costo) DESC) classifica
+	FROM cliente, errore
+	WHERE cliente.codc = errore.codc
+	GROUP BY errore.codc
+)
+SELECT *
+FROM prova
+WHERE classifica <= 2
+ORDER BY classifica;
